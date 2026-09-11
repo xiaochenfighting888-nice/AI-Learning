@@ -24,4 +24,4 @@ if __name__ == "__main__":
     # 利用 inverse 构造整数范围内的“平方根函数”
     # 仅当 y 是完全平方数时才能找到结果，否则搜索不会终止
     sqrt = inverse(square)
-    print(sqrt(100))  # 10...
+    print(sqrt(100))  # 10
