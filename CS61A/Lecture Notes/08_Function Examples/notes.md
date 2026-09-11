@@ -42,3 +42,49 @@ def 原函数():
 > `@装饰器` 本身不是在调用原函数。
 >
 > 它是在函数定义完成之后，把原函数传给装饰器，然后让原函数名指向装饰器返回的新函数。
+
+## 示例
+
+~~~python
+def trace(fn):
+    def wrapper(x):
+        print("before")
+        return fn(x)
+
+    return wrapper
+
+
+@trace
+def square(x):
+    return x * x
+~~~
+
+不看@trace，把它展开：
+
+~~~python
+def square(x):
+    return x * x
+
+square = trace(square)
+~~~
+
+执行过程：
+
+~~~python
+ square(3)
+	↓
+wrapper(3)
+	↓
+  x = 3
+	↓
+print("before")
+	↓
+   fn(3)
+	↓
+原来的 square(3)
+	↓
+  3 * 3
+	↓
+	9
+~~~
+
