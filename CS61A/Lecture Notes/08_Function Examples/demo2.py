@@ -26,9 +26,9 @@ def trace1(fn):
 #   def square(x):
 #     return x * x
 # square = trace1(square)
+# square 这个名字指向的已经不是原来的 square，而是 trace1 返回的 traced 函数
 
 
-# square 这个名字指向的已经不是原来的 square，而是 trace1 返回的 traced 函数。
 @trace1  # @trace1 是装饰器语法
 def square(x):
     # 返回 x 的平方
