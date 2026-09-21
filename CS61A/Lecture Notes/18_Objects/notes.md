@@ -176,13 +176,7 @@ a.balance
 a.backup = b
 ```
 
-此时对象 `a` 新增：
-
-```
-backup
-```
-
-属性。
+此时对象 `a` 新增 `backup` 属性。
 
 访问：
 
@@ -363,20 +357,13 @@ amount = 10
 
 例如：
 
-```
+```python
 a = Account("John")
 
 b = Account("Jack")
 ```
 
-虽然：
-
-```
-a
-b
-```
-
-都是 Account 实例，但是它们是不同对象。
+虽然a、b都是 Account 实例，但是它们是不同对象。
 
 ### is 运算符
 
@@ -406,7 +393,7 @@ a is b
 
 结果：
 
-```
+```python
 False
 ```
 
