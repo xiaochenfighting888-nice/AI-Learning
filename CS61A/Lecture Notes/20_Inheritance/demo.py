@@ -20,6 +20,8 @@ class Account:
 
 
 class CheckingAccount(Account):
+    """取款时收取手续费的账户"""
+
     interest = 0.01
     withdraw_fee = 1
 
@@ -28,6 +30,8 @@ class CheckingAccount(Account):
 
 
 class SavingsAccount(Account):
+    """存款时收取手续费的储蓄账户"""
+
     deposit_fee = 2
 
     def deposit(self, amount):
@@ -36,6 +40,8 @@ class SavingsAccount(Account):
 
 class AsSeenOnTVAccount(CheckingAccount, SavingsAccount):
     """
+    同时具有支票账户和储蓄账户行为的账户
+
     >>> such_a_deal = AsSeenOnTVAccount("john")
     >>> such_a_deal.balance
     1
@@ -51,18 +57,23 @@ class AsSeenOnTVAccount(CheckingAccount, SavingsAccount):
 
 
 class Bank:
+    """管理多个账户并执行开户、付息等操作"""
+
     def __init__(self):
         self.accounts = []
 
     def open_account(self, holder, amount, kind=Account):
+        """创建账户、存入初始金额并加入银行账户列表"""
         account = kind(holder)
         account.deposit(amount)
         self.accounts.append(account)
         return account
 
     def pay_interest(self):
+        """为银行中的所有账户支付利息"""
         for a in self.accounts:
             a.deposit(a.balance * a.interest)
 
     def too_big_to_fail(self):
+        """判断银行是否拥有超过一个账户"""
         return len(self.accounts) > 1
